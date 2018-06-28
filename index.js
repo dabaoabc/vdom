@@ -1,3 +1,3 @@
-import { el } from './vdom/index'
+import { el, patch } from './vdom/index'
 
-console.log(el);
+console.log(patch());
