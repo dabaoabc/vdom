@@ -16,6 +16,7 @@
 ## 虚拟DOM树比较
 ![同级](img/diff.png)
 
+## DOM diff（四个纬度比较）
 ```XML
 <section>
     <div v-if="a==1">
@@ -31,8 +32,6 @@
     </div>
 </section>
 ```
-
-## DOM diff（四个纬度比较）
 ![同级](img/diff2.jpg)
 ## DOM diff（以key为标准）
 ![同级](img/diff3.png)![同级](img/diff4.png)
