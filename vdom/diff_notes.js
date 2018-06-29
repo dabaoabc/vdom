@@ -1,9 +1,12 @@
 import { api, isArray} from '../util/index'
 import { createEle, updateEle } from './index'
 
+// 判断节点是否相同
 function sameVnode(oldVnode, vnode){
 	return vnode.key === oldVnode.key && vnode.sel === oldVnode.sel
 }
+
+// 在旧的子节点创建key映射
 function createKeyToOldIdx (children, beginIdx, endIdx) {
     var i, map = {}, key, ch
     for (i = beginIdx; i <= endIdx; ++i) {
@@ -16,22 +19,27 @@ function createKeyToOldIdx (children, beginIdx, endIdx) {
     }
     return map
 }
+
+// 删除节点
 function removeVnodes (parentElm, vnodes, startIdx, endIdx) {
-        for ( ;startIdx <= endIdx; ++startIdx) {
-            var ch = vnodes[startIdx]
-            if (ch != null) {
-                    api.removeChild(parentElm, ch.el)
-            }
+    for ( ;startIdx <= endIdx; ++startIdx) {
+        var ch = vnodes[startIdx]
+        if (ch != null) {
+                api.removeChild(parentElm, ch.el)
         }
     }
+}
+
+// 增加节点
 function addVnodes (parentElm, before, vnodes, startIdx, endIdx) {
-        for ( ;startIdx <= endIdx; ++startIdx) {
-            var ch = vnodes[startIdx]
-            if (ch != null) {
-                api.insertBefore(parentElm, createEle(ch).el, before)
-            }
+    for ( ;startIdx <= endIdx; ++startIdx) {
+        var ch = vnodes[startIdx]
+        if (ch != null) {
+            api.insertBefore(parentElm, createEle(ch).el, before)
         }
-    }    
+    }
+}    
+
 function patchVnode (oldVnode, vnode) {
 	const el = vnode.el = oldVnode.el
     let i, oldCh = oldVnode.children, ch = vnode.children
