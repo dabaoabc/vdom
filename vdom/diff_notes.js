@@ -147,7 +147,7 @@ function updateChildren (parentElm, oldCh, newCh) {
                     // 如果 sel 不同，没办法，只能创建新 dom；
                     if (elmToMove.sel !== newStartVnode.sel) {
                         api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el)
-                    // type 相同（且key相同），那么说明是相同的 vnode，执行 patch。
+                    // sel 相同（且key相同），那么说明是相同的 vnode，执行 patch。
                     }else {
                         patchVnode(elmToMove, newStartVnode)
                         oldCh[idxInOld] = null
